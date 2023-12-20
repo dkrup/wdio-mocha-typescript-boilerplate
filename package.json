@@ -1,6 +1,6 @@
 {
     "name": "webdriverio-tests",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "devDependencies": {
         "@wdio/allure-reporter": "^7.20.3",
@@ -10,7 +10,7 @@
         "@wdio/spec-reporter": "^7.20.3",
         "allure-commandline": "^2.17.2",
         "chai": "^4.3.6",
-        "chromedriver": "^102.0.0",
+        "chromedriver": "120.0.0",
         "dotenv": "^16.0.1",
         "rimraf": "^3.0.2",
         "ts-node": "^10.8.1",

@@ -1,46 +1,61 @@
 import {PageBaseClass} from './PageBaseClass';
 
 class LoginPage extends PageBaseClass {
+    // Login Page Selectors
     private WEBSITE_LINK = process.env.WEBSITE_LINK;
+    private loginFormSelector = '.form_group';
+    private usernameInputSelector = '#user-name';
+    private passwordInputSelector = '#password';
+    private loginButtonSelector = '[data-test="login-button"]';
+    private errorMessageSelector = '[data-test="error"]';
+    private inventoryPageSelector = '#inventory_container';
 
-    private popUp = '.ui-dialog';
-    private okBtn = '.ui-dialog-buttonpane .ui-button';
+    // Login Page Elements
+    private loginFormElem = () => $(this.loginFormSelector);
+    private usernameInputElem = () => $(this.usernameInputSelector);
+    private passwordInputElem = () => $(this.passwordInputSelector);
+    private loginBtnElem = () => $(this.loginButtonSelector);
+    private errorMessageElem = () => $(this.errorMessageSelector);
+    private inventoryPageElem = () => $(this.inventoryPageSelector);
 
-    private userNameInputElem = () => $('#login');
-    private passWordInputElem = () => $('#pass');
-    private submitBtnElem = () => $('.ui-button-text');
-    private errorMessage = () => $('#validate_auth_msg');
-
-    async waitForPopUpVisible() {
-        await (await this.getElement(this.popUp)).waitForDisplayed();
+    // Login Page Methods
+    async waitForLoginFormVisible() {
+        await this.loginFormElem().waitForDisplayed();
     }
 
-    async openLoginPage() {
-        await this.openPath(this.WEBSITE_LINK);
-        await this.waitForPopUpVisible();
+    async waitForUsernameInputVisible() {
+        await this.usernameInputElem().waitForDisplayed();
     }
 
-    async clickOkBtnOnPopUp() {
-        await (await this.getElement(this.okBtn)).click();
+    async waitForPasswordInputVisible() {
+        await this.passwordInputElem().waitForDisplayed();
     }
 
-    async fillUserNameInput(userName: string) {
-        await this.userNameInputElem().setValue(userName);
+    async openWebsite() {
+        await this.openUrl(this.WEBSITE_LINK);
+    }
+
+    async fillUsernameInput(userName: string) {
+        await this.usernameInputElem().setValue(userName);
     }
 
     async fillPasswordInput(password: string) {
-        await this.passWordInputElem().setValue(password);
+        await this.passwordInputElem().setValue(password);
     }
 
-    async clickSubmitBtn() {
-        await this.submitBtnElem().click();
+    async clickLoginBtn() {
+        await this.loginBtnElem().click();
     }
 
     async isErrorMessageShown() {
-        return await this.errorMessage().isDisplayed();
+        return await this.errorMessageElem().isDisplayed();
     }
 
-    getErrorMessageText = async () => await this.errorMessage().getText();
+    getErrorMessageText = async () => await this.errorMessageElem().getText();
+
+    async isInventoryPageOpened() {
+        return await this.inventoryPageElem().isDisplayed();
+    }
 }
 
 export const loginPage = new LoginPage();

@@ -1,15 +1,21 @@
 import {loginPage} from '../pageObjects/LoginPage';
 
 class LoginPageService {
-    async openLoginPageAndClosePopup() {
-        await loginPage.openLoginPage();
-        await loginPage.clickOkBtnOnPopUp();
+    async openLoginPage() {
+        await loginPage.openWebsite();
+        await loginPage.waitForLoginFormVisible();
+        await loginPage.waitForUsernameInputVisible();
+        await loginPage.waitForPasswordInputVisible();
     }
 
     async fillLoginPageForm(userName: string, password: string) {
-        await loginPage.fillUserNameInput(userName);
+        await loginPage.fillUsernameInput(userName);
         await loginPage.fillPasswordInput(password);
-        await loginPage.clickSubmitBtn();
+        await loginPage.clickLoginBtn();
+    };
+
+    async isLoginSuccessful() {
+        return await loginPage.isInventoryPageOpened();
     };
 }
 
