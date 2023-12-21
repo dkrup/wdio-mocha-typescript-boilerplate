@@ -19,7 +19,7 @@
         "wdio-video-reporter": "^3.2.1"
     },
     "scripts": {
-        "test": "wdio run test/wdio.conf.ts",
+        "test": "wdio run wdio.conf.ts",
         "pretest": "rimraf allure-results && rimraf allure-report && rimraf allure-video-report",
         "afterTest": "allure generate allure-results --clean -o allure-reports || true"
     }

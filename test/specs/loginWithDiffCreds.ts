@@ -1,6 +1,6 @@
-import {loginPage} from '../pageObjects/LoginPage';
-import {loginPageService} from '../services/LoginPageService';
-import {loginPageTestData} from '../testData/LoginPageTestData';
+import {loginPage} from '../../pageObjects/LoginPage';
+import {loginPageService} from '../../services/LoginPageService';
+import {loginPageTestData} from './testData/LoginPageTestData';
 
 const invalidUser = loginPageTestData.invalidUsername;
 const invalidPass = loginPageTestData.invalidPassword;

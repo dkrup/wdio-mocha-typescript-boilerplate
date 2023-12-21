@@ -3,5 +3,5 @@ services:
   node:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     tty: true
